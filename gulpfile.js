@@ -117,14 +117,16 @@ function copyHtml(){
 /* clean debug directory */
 function cleanDebug () {
   return del([
-    './debug/**/*'
+    './debug/**/*',
+    '!./debug/favicon.ico'
   ])
 }
 
 /* clean release directory */
 function cleanRelease () {
   return del([
-    './docs/**/*'
+    './docs/**/*',
+    '!./docs/favicon.ico'
   ])
 }
 
