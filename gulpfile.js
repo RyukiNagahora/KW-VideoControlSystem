@@ -66,7 +66,7 @@ function jsTranspileRelease () {
     .pipe(source('bundle.js'))
     .pipe(buffer())
     .pipe(uglify())
-    .pipe(gulp.dest('./release/js'))
+    .pipe(gulp.dest('./docs/js'))
 }
 
 /*  */
@@ -84,7 +84,7 @@ function cssTranspileRelease () {
       errorHandler: notify.onError('Error: <%= error.message %>')
     }))
     .pipe(stylus())
-    .pipe(gulp.dest('./release/css'))
+    .pipe(gulp.dest('./docs/css'))
 }
 
 /*  */
@@ -106,12 +106,12 @@ function htmlCompileRelease () {
     .pipe(pug({
       pretty: true
     }))
-    .pipe(gulp.dest('./release'))
+    .pipe(gulp.dest('./docs'))
 }
 function copyHtml(){
   return gulp.src(['./src/html/**'])
     .pipe(gulp.dest('./debug/'))
-    .pipe(gulp.dest('./release/'))
+    .pipe(gulp.dest('./docs/'))
 }
 
 /* clean debug directory */
@@ -124,7 +124,7 @@ function cleanDebug () {
 /* clean release directory */
 function cleanRelease () {
   return del([
-    './release/**/*'
+    './docs/**/*'
   ])
 }
 
@@ -132,14 +132,14 @@ function cleanRelease () {
 function copyAssets () {
   return gulp.src(['./src/assets/**'])
     .pipe(gulp.dest('./debug/assets'))
-    .pipe(gulp.dest('./release/assets'))
+    .pipe(gulp.dest('./docs/assets'))
 }
 
 /*  */
 function cleanAssets () {
   return del([
     './debug/assets/**',
-    './release/assets/**'
+    './docs/assets/**'
   ])
 }
 
