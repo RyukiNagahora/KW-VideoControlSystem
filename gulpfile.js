@@ -32,7 +32,7 @@ function watch (cb) {
   browserSync.watch(['./src/babel/**/*.es6'], gulp.series(jsTranspileDebug, reload))
   browserSync.watch(['./src/stylus/**/*.styl'], gulp.series(cssTranspile, reload))
   browserSync.watch(['./src/pug/**/*.pug'], gulp.series(htmlCompile, reload))
-  browserSync.watch(['./src/assets/**'], gulp.series(cleanAssets, copyAssets))
+  // browserSync.watch(['./src/assets/**'], gulp.series(cleanAssets, copyAssets))
   browserSync.watch(['./src/html/**'], gulp.series(cleanAssets, copyAssets))
   cb()
 }
@@ -148,7 +148,7 @@ function cleanAssets () {
 /* exports */
 exports.assets = gulp.series(cleanAssets, copyAssets)
 // exports.default = gulp.series(cleanDebug, jsTranspileDebug, cssTranspile, copyHtml, browsersync, watch)
-exports.default = gulp.series(cleanDebug, jsTranspileDebug, cssTranspile, htmlCompile, browsersync, watch)
+exports.default = gulp.series(cleanDebug, copyAssets, jsTranspileDebug, cssTranspile, htmlCompile, browsersync, watch)
 // exports.release = gulp.series(cleanAssets, copyAssets, cleanRelease, jsTranspileRelease, cssTranspileRelease, copyHtml)
 exports.release = gulp.series(cleanRelease, copyAssets, jsTranspileRelease, cssTranspileRelease, htmlCompileRelease)
 exports.clear = gulp.series(cleanDebug, cleanRelease)
